@@ -1,5 +1,14 @@
 import React from 'react';
+import 'normalize.css';
+import { GlobalStyles } from '../global';
+
+import { Header } from '../components/header/Header';
 
 export default function App() {
-  return <h1>Hello World</h1>;
+  return (
+    <>
+      <GlobalStyles />
+      <Header />
+    </>
+  );
 }
