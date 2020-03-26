@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
+import reducer, { initialState } from '../../reducers/menuReducer';
 import { useFirebase } from '../firebase/FirebaseContext';
 import { Card } from './CustomerInfo.styled';
 
 export const CustomerInfo = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState(null);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { name, email, phone } = state;
 
   const firebase = useFirebase();
   
@@ -16,6 +16,7 @@ export const CustomerInfo = () => {
       phone,
       completed: false,
     };
+    
     firebase.orders().push(user);
   };
 
@@ -32,7 +33,11 @@ export const CustomerInfo = () => {
         <section>
           <label htmlFor="Full Name">Full Name:</label>
           <input
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => dispatch({
+              type: 'FIELD',
+              field: 'name',
+              value: e.currentTarget.value
+            })}
             type="text"
             id="Full Name"
             name="Full Name"
@@ -41,7 +46,11 @@ export const CustomerInfo = () => {
         <section>
           <label htmlFor="Email">Email Address:</label>
           <input
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => dispatch({
+              type: 'FIELD',
+              field: 'email',
+              value: e.currentTarget.value
+            })}
             type="text" 
             id="Email"
             name="Email"
@@ -50,7 +59,11 @@ export const CustomerInfo = () => {
         <section>
           <label htmlFor="Phone">Phone Number:</label>
           <input
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={(e) => dispatch({
+              type: 'FIELD',
+              field: 'phone',
+              value: e.currentTarget.value
+            })}
             type="tel"
             id="Phone"
             name="Phone"
