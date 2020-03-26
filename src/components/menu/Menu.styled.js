@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import styled from 'styled-components';
 
 export const ContentWrapper = styled.div`
@@ -55,6 +54,7 @@ export const Section = styled.section`
     text-align: center;
     border: 2px solid #b03a0c;
     line-height: 1;
+    color: #b03a0c;
   }
 
   .product_description {
