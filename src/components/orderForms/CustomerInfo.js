@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import reducer, { initialState } from '../../reducers/menuReducer';
+import reducer, { initialState } from '../../reducers/customerReducer';
 import { useFirebase } from '../firebase/FirebaseContext';
 import { Card } from './CustomerInfo.styled';
 
@@ -8,6 +8,18 @@ export const CustomerInfo = () => {
   const { name, email, phone } = state;
 
   const firebase = useFirebase();
+
+  const onEnter = (e) => {
+    e.preventDefault();
+    const user = {
+      name,
+      email,
+      phone,
+      completed: false,
+    };
+    console.log(user);
+    
+  };
   
   const onSubmit = () => {
     const user = {
@@ -16,7 +28,7 @@ export const CustomerInfo = () => {
       phone,
       completed: false,
     };
-    
+
     firebase.orders().push(user);
   };
 
@@ -30,49 +42,53 @@ export const CustomerInfo = () => {
           Just fill out some basic info in case we need to contact you.
           </strong>
         </p>
-        <section>
-          <label htmlFor="Full Name">Full Name:</label>
-          <input
-            onChange={(e) => dispatch({
-              type: 'FIELD',
-              field: 'name',
-              value: e.currentTarget.value
-            })}
-            type="text"
-            id="Full Name"
-            name="Full Name"
-          />
-        </section>
-        <section>
-          <label htmlFor="Email">Email Address:</label>
-          <input
-            onChange={(e) => dispatch({
-              type: 'FIELD',
-              field: 'email',
-              value: e.currentTarget.value
-            })}
-            type="text" 
-            id="Email"
-            name="Email"
-          />
-        </section>
-        <section>
-          <label htmlFor="Phone">Phone Number:</label>
-          <input
-            onChange={(e) => dispatch({
-              type: 'FIELD',
-              field: 'phone',
-              value: e.currentTarget.value
-            })}
-            type="tel"
-            id="Phone"
-            name="Phone"
-            placeholder="Phone"
-          />
-        </section>
-        <section>
-          <button type="submit" onClick={onSubmit}>Submit</button>
-        </section>
+        <form onSubmit={onEnter}>
+          <section>
+            <label htmlFor="Full Name">Full Name:</label>
+            <input
+              onChange={(e) => dispatch({
+                type: 'FIELD',
+                field: 'name',
+                value: e.currentTarget.value
+              })}
+              type="text"
+              id="Full Name"
+              name="Full Name"
+              required
+            />
+          </section>
+          <section>
+            <label htmlFor="Email">Email Address:</label>
+            <input
+              onChange={(e) => dispatch({
+                type: 'FIELD',
+                field: 'email',
+                value: e.currentTarget.value
+              })}
+              type="text" 
+              id="Email"
+              name="Email"
+              required
+            />
+          </section>
+          <section>
+            <label htmlFor="Phone">Phone Number:</label>
+            <input
+              onChange={(e) => dispatch({
+                type: 'FIELD',
+                field: 'phone',
+                value: e.currentTarget.value
+              })}
+              type="tel"
+              id="Phone"
+              name="Phone"
+              placeholder="Phone"
+              required
+            />
+          </section>
+          <button>Submit</button>
+        </form>
+
       </Card>
     </>
   );
