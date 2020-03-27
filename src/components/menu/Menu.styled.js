@@ -52,15 +52,15 @@ export const Section = styled.section`
     border-radius: .1875rem;
     background-color: transparent;
     text-align: center;
-    border: 2px solid #b03a0c;
+    border: 2px solid var(--rust);
     line-height: 1;
-    color: #b03a0c;
+    color: var(--rust);
   }
 
   .product_description {
     margin-top: auto;
     margin-bottom: .5em;
-    color: #b03a0c;
+    color: var(--rust);
   }
 
   div {
@@ -77,17 +77,17 @@ export const Section = styled.section`
     font-size: 1.125rem;
     text-transform: uppercase;
     letter-spacing: .027em;
-    background-color: #b03a0c;
+    background-color: var(--rust);
     border: 0;
     border-radius: .1875rem;
     padding: 0.5em;
     cursor: pointer;
-    color: #fdb641;
+    color: var(--lightorange);
   }
 
   h3 {
     margin: 0 0 .5em;
-    color: #b03a0c;
+    color: var(--rust);
   }
 
 `;
