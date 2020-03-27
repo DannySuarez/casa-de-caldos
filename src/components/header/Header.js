@@ -29,7 +29,7 @@ const HeaderWrapper = styled.header`
   font-size: 2rem;
   font-family: "Comfortaa","Fira Mono", monospace;
   margin: 2rem auto;
-  color: #b03a0c;
+  color: var(--rust);
   }
 
   @media (min-width: 1824px) {
