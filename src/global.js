@@ -1,6 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
+	html {
+		--lightorange: #fdb641;
+		--rust: #b03a0c;
+		--lightborange: #efa23a;
+	}
 
 	html,
 	body {
@@ -16,7 +21,7 @@ export const GlobalStyles = createGlobalStyle`
 
 	body {
 		margin-bottom: 25px;
-    background-color: #fdb641;
+    background-color: var(--lightorange);
 		text-rendering: optimizeLegibility;
 	}
 

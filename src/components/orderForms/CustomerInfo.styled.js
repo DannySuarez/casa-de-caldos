@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Card = styled.div`
 
-  background-color: #ab3f1529;
+  background-color: var(--lightborange);
   border: 1px solid rgba(85,85,85,.2);
   border-radius: 3px;
   text-align: center;
@@ -20,13 +20,13 @@ export const Card = styled.div`
   }
 
   h2 {
-  background-color: #b03a0c;
+  background-color: var(--rust);
   margin-top: 0;
   color: white;
   }
 
   p {
-    color: #b03a0c;
+    color: var(--rust);
   }
 
 `;
