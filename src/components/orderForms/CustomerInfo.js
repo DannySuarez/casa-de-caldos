@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import reducer, { initialState } from '../../reducers/customerReducer';
 import { useFirebase } from '../firebase/FirebaseContext';
-import { Card } from './CustomerInfo.styled';
+import { Card, Section } from './CustomerInfo.styled';
 
 export const CustomerInfo = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -43,8 +43,8 @@ export const CustomerInfo = () => {
           </strong>
         </p>
         <form onSubmit={onEnter}>
-          <section>
-            <label htmlFor="Full Name">Full Name:</label>
+          <Section>
+            <label htmlFor="Full Name"><i>*</i>Full Name:</label>
             <input
               onChange={(e) => dispatch({
                 type: 'FIELD',
@@ -56,9 +56,9 @@ export const CustomerInfo = () => {
               name="Full Name"
               required
             />
-          </section>
-          <section>
-            <label htmlFor="Email">Email Address:</label>
+          </Section>
+          <Section>
+            <label htmlFor="Email"><i>*</i>Email Address:</label>
             <input
               onChange={(e) => dispatch({
                 type: 'FIELD',
@@ -70,9 +70,9 @@ export const CustomerInfo = () => {
               name="Email"
               required
             />
-          </section>
-          <section>
-            <label htmlFor="Phone">Phone Number:</label>
+          </Section>
+          <Section>
+            <label htmlFor="Phone"><i>*</i>Phone Number:</label>
             <input
               onChange={(e) => dispatch({
                 type: 'FIELD',
@@ -85,7 +85,7 @@ export const CustomerInfo = () => {
               placeholder="Phone"
               required
             />
-          </section>
+          </Section>
           <button>Submit</button>
         </form>
 

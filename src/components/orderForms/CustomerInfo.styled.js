@@ -1,12 +1,44 @@
 import styled from 'styled-components';
 
 export const Card = styled.div`
-
   background-color: var(--lightborange);
   border: 1px solid rgba(85,85,85,.2);
+  overflow: hidden;
   border-radius: 3px;
+  white-space: normal;
   text-align: center;
+  width: 97.5%;
 
+  h2 {
+    background-color: var(--rust);
+    margin-top: 0;
+    color: white;
+  }
+
+  p {
+    color: var(--rust);
+  }
+
+  form {
+    padding: 0 .83em .83em;
+  }
+
+  label {
+    width: 37.5%;
+    text-align: right;
+    margin-bottom: 0;
+    display: inline-block;
+  }
+
+  input {
+    width: 30.5%;
+    margin-left: 2.5%;
+  }
+
+  i {
+      padding-right: .25em;
+    }
+  
   input[type=email],
   input[type=tel],
   input[type=text] {
@@ -16,17 +48,26 @@ export const Card = styled.div`
     border: 1px solid #aaa;
     line-height: 1.5;
     color: #333;
-    font-size: .75em;
+    font-size: 16px;
   }
 
-  h2 {
-  background-color: var(--rust);
-  margin-top: 0;
-  color: white;
-  }
+  @media (max-width: 641px) {
 
-  p {
-    color: var(--rust);
-  }
+    label {
+      width: 97.5%;
+      text-align: left;
+    }
 
+    input {
+      width: 97.5%;
+      margin-bottom: .833333333em;
+    }
+  }
+`;
+
+export const Section = styled.section`
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: .833333333em;
 `;
