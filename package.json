@@ -29,7 +29,8 @@
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "use-combined-reducers": "^1.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
