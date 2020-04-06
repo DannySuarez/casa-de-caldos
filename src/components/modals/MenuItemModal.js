@@ -9,13 +9,13 @@ export const MenuItemModal = ({ item, setIsOpen }) => {
     <ModalWrapper>
       <div>
         <ModalContent>
-          <button onClick={() => !setIsOpen()}><i>X</i></button>
+          <button onClick={() => setIsOpen(prevState => !prevState)}><i>X</i></button>
           <ModalImage>
             <img src={item.img} />
           </ModalImage>
           <ModalBody>
             <h2>{item.name}</h2>
-            <p>Corn masa with your favorite filling, steamed in cornhusks.</p>
+            <p>{item.mainDescription}</p>
             <ModalForm item={item} />
           </ModalBody>
         </ModalContent>
