@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useStore } from '../../store/index';
+import { ItemModifier } from './ItemModifier';
+import { useStore } from '../../store';
 import { addProduct } from '../../actions/productActions';
 import { 
   Form,
@@ -11,7 +12,7 @@ import {
 
 export const ModalForm = ({ item }) => {
   const { name, price } = item;
-  
+
   const [isChecked, setIsChecked] = useState({
     Asada: false,
     AlPastor: false,
@@ -21,7 +22,7 @@ export const ModalForm = ({ item }) => {
   const [inputValue, setInputValue] = useState('');
 
   const [, dispatch] = useStore();  
-
+  
   const checkProteinOptions = proteinObject => {
     const protein = {};
     
@@ -63,62 +64,11 @@ export const ModalForm = ({ item }) => {
   return (
     <Form onSubmit={SubmitOrder}>
       <ItemModifiers className="parent">
-        <legend>
-          <span>ADD PROTEIN</span>
-          <span>Select 1</span>
-        </legend>
-        <fieldset>
-          <div>
-            <input
-              checked={isChecked.Asada} 
-              onChange={handleChange} 
-              type="checkbox" 
-              id="Asada" 
-              value="Asada"
-              name="Asada"
-            />
-            <label htmlFor="Asada">Add Asada</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <div>
-            <input
-              checked={isChecked.AlPastor} 
-              onChange={handleChange} 
-              type="checkbox" 
-              id="AlPastor" 
-              value="AlPastor" 
-              name="AlPastor"
-            />
-            <label htmlFor="AlPastor">Add Al Pastor</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <div>
-            <input
-              checked={isChecked.Pollo}
-              onChange={handleChange}
-              type="checkbox"
-              id="Pollo"
-              value="Pollo"
-              name="Pollo"
-            />
-            <label htmlFor="Pollo">Add Pollo</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <div>
-            <input
-              checked={isChecked.Lengua}
-              onChange={handleChange}
-              type="checkbox"
-              id="Lengua"
-              value="Lengua"
-              name="Lengua"
-            />
-            <label htmlFor="Lengua">Add Lengua</label>
-          </div>
-        </fieldset>
+        <ItemModifier 
+          name={name} 
+          isChecked={isChecked} 
+          handleChange={handleChange} 
+        />
         <SpecialInstructions>
           <label>Special Requests</label>
           <textarea
@@ -130,7 +80,7 @@ export const ModalForm = ({ item }) => {
           >
           </textarea>
           <AddToCartButton>
-            <p>${item.price}</p>
+            <p>${item.price.toFixed(2)}</p>
             <button>Add To Cart</button>
           </AddToCartButton>
         </SpecialInstructions>
