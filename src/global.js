@@ -33,4 +33,8 @@ export const GlobalStyles = createGlobalStyle`
 		margin: 2rem auto
 	}
 
+	fieldset {
+		border: none;
+	}
+
 `;

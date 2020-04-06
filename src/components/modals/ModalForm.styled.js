@@ -44,12 +44,6 @@ export const ItemModifiers = styled.div`
     margin-right: 6px;
     text-transform: none;
   }
-
-  div:first-child {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-  }
    
   input {
     height: 24px;
