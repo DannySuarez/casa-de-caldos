@@ -70,19 +70,21 @@ export const ModalForm = ({ item }) => {
           handleChange={handleChange} 
         />
         <SpecialInstructions>
-          <label>Special Requests</label>
-          <textarea
-            placeholder="e.g. ‘No Rice!’ Please be clear.
-            Price adjustments will be added by the restaurant if needed."
-            rows="4"
-            value={inputValue}
-            onChange={handleChange}
-          >
-          </textarea>
-          <AddToCartButton>
-            <p>${item.price.toFixed(2)}</p>
-            <button>Add To Cart</button>
-          </AddToCartButton>
+          <div>
+            <label>Special Requests</label>
+            <textarea
+              placeholder="e.g. ‘No Rice!’ Please be clear.
+              Price adjustments will be added by the restaurant if needed."
+              rows="4"
+              value={inputValue}
+              onChange={handleChange}
+            >
+            </textarea>
+            <AddToCartButton>
+              <p>${item.price.toFixed(2)}</p>
+              <button>Add To Cart</button>
+            </AddToCartButton>
+          </div>
         </SpecialInstructions>
       </ItemModifiers>
     </Form>

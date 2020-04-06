@@ -44,6 +44,12 @@ export const ItemModifiers = styled.div`
     margin-right: 6px;
     text-transform: none;
   }
+
+  div:first-child {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+  }
    
   input {
     height: 24px;
@@ -67,8 +73,11 @@ export const ItemModifiers = styled.div`
 `;
 
 export const SpecialInstructions = styled.div`
-  margin-top: 30px;
-  display: block;
+  &&& div {
+    margin-top: 30px;
+    display: block;
+  }
+  
   ::before {
     padding-top: 21px;
     background-image: linear-gradient(90deg,#ccc 25%,hsla(0,0%,80%,0) 0,hsla(0,0%,80%,0));
@@ -79,7 +88,7 @@ export const SpecialInstructions = styled.div`
     display: block;
     height: 1px;
     position: relative;
-    }
+  }
 
   ::after {
     padding-top: 6px;
@@ -94,26 +103,26 @@ export const SpecialInstructions = styled.div`
     margin-top: 30px
   }
 
-    label {
-      display: inline-block;
-      margin: 0 0 26px; 
-      padding: 0;
-    }
+  label {
+    display: inline-block;
+    margin: 0 0 26px; 
+    padding: 0;
+  }
 
-    textarea {
-      height: auto;
-      resize: vertical;
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-      box-shadow: none;
-      color: #2d3c48;
-      display: block;
-      padding: 10px 14px;
-      transition: background-color .15s ease;
-      width: 100%;
-    }
+  textarea {
+    height: auto;
+    resize: vertical;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: none;
+    color: #2d3c48;
+    display: block;
+    padding: 10px 14px;
+    transition: background-color .15s ease;
+    width: 100%;
+  }
 `;
 
 export const AddToCartButton = styled.div`
