@@ -1,4 +1,4 @@
-import { PriceAdder } from './index';
+import { PriceAdder, priceAdjust } from './index';
 describe('util helpers', () => {
   it('should map thrugh an array of orders and return total price', () => {
     const orders = [
@@ -28,8 +28,8 @@ describe('util helpers', () => {
       }
     ];
 
-    const Total = PriceAdder(orders);
-    expect(Total).toEqual(29.48);
+    const total = PriceAdder(orders);
+    expect(total).toEqual(29.48);
   });
 
   it('should add correctly', () => {
@@ -60,39 +60,27 @@ describe('util helpers', () => {
       }
     ];
 
-    const Total = PriceAdder(orders);
-    expect(Total).toEqual(30.96);
+    const total = PriceAdder(orders);
+    expect(total).toEqual(30.96);
   });
 
   it('should add an extra charge for protein in a Picadita', () => {
-    const order = [
+    const order = 
       {
         name: 'Picadita',
         price: 3.00,
         specialRequest: '',
         protein: ['Asada']
-      },
-      {
-        name: 'Picadita',
-        price: 3.00,
-        specialRequest: '',
-        protein: ['Lengua']
-      },
-      {
-        name: 'Picadita',
-        price: 3.00,
-        specialRequest: '',
-        protein: []
-      },
-      {
-        name: 'Mole',
-        price: 3.99,
-        specialRequest: '',  
-        protein: [],
-      },
-    ];
+      };
 
-    const Total = PriceAdder(order);
-    expect(Total).toEqual(14.99);
+    const adjustedOrder = priceAdjust(order);
+    expect(adjustedOrder).toEqual(
+      {
+        name: 'Picadita',
+        price: 4.00,
+        specialRequest: '',
+        protein: ['Asada']
+      }
+    );
   });
 });
