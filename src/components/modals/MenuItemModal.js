@@ -16,7 +16,7 @@ export const MenuItemModal = ({ item, setIsOpen }) => {
           <ModalBody>
             <h2>{item.name}</h2>
             <p>{item.mainDescription}</p>
-            <ModalForm item={item} />
+            <ModalForm item={item} setIsOpen={setIsOpen} />
           </ModalBody>
         </ModalContent>
       </div>

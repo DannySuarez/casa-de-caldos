@@ -9,8 +9,9 @@ import {
   SpecialInstructions, 
   AddToCartButton 
 } from './ModalForm.styled';
+import { priceAdjust } from '../../utils';
 
-export const ModalForm = ({ item }) => {
+export const ModalForm = ({ item, setIsOpen }) => {
   const { name, price } = item;
 
   const [isChecked, setIsChecked] = useState({
@@ -19,7 +20,7 @@ export const ModalForm = ({ item }) => {
     Pollo: false,
     Lengua: false
   });
-  const [inputValue, setInputValue] = useState('');
+  const [specialRequest, setSpecialRequest] = useState('');
 
   const [, dispatch] = useStore();  
   
@@ -42,22 +43,24 @@ export const ModalForm = ({ item }) => {
     const protein = checkProteinOptions(isChecked);
     const order = {
       protein,
-      inputValue,
+      specialRequest,
       name,
       price
     };
-    dispatch(addProduct(order));
+    const orderWithTotal = priceAdjust(order);
+    dispatch(addProduct(orderWithTotal));
+    setIsOpen(prevState => !prevState);
   };
   
   const handleChange = (e) => {
-    const checked = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    const checked = e.target.type === 'checkbox' ? e.target.checked : null;
     setIsChecked({
       ...isChecked,
       [e.target.name]: checked
     });
 
     if(e.target.type === 'textarea') {
-      setInputValue(e.target.value);
+      setSpecialRequest(e.target.value);
     }
   };
 
@@ -76,7 +79,7 @@ export const ModalForm = ({ item }) => {
               placeholder="e.g. ‘No Rice!’ Please be clear.
               Price adjustments will be added by the restaurant if needed."
               rows="4"
-              value={inputValue}
+              value={specialRequest}
               onChange={handleChange}
             >
             </textarea>
@@ -92,5 +95,6 @@ export const ModalForm = ({ item }) => {
 };
 
 ModalForm.propTypes = {
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
+  setIsOpen: PropTypes.func.isRequired
 };
