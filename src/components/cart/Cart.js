@@ -1,14 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useStore } from '../../store';
+import { PriceAdder } from '../../utils';
 
 export const Cart = () => {
-  const array = [];
+  const [{ orders }] = useStore();
+
+  const cartTotal = PriceAdder(orders);
   
   return (
     <ButtonWrapper>
       <Button>
-        <span>{array.length}</span>
-        <span>View Cart</span> $26
+        <span>{orders.length}</span>
+        <span>View Cart</span>${cartTotal}
       </Button>
     </ButtonWrapper>
   );
