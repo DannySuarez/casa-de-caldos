@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useStore } from '../../store';
-import { PriceAdder } from '../../utils';
+import { priceAdder } from '../../utils';
 
 export const Cart = () => {
   const [{ orders }] = useStore();
 
-  const cartTotal = PriceAdder(orders);
+  const cartTotal = priceAdder(orders);
   
   return (
     <ButtonWrapper>

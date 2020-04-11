@@ -1,4 +1,4 @@
-export const PriceAdder = (orders) => {
+export const priceAdder = (orders) => {
   const total = orders.map(order => order.price).reduce((a, b) => a + b, 0);
   return Number(total.toFixed(2));
 };
