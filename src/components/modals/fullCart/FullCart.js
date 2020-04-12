@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { CartItem } from './CartItem';
 import styled from 'styled-components';
 import { useStore } from '../../../store';
 import { priceAdder } from '../../../utils';
 
-export const FullCart = () => {
+export const FullCart = ({ onClick }) => {
   const [{ orders }] = useStore();
   const total = priceAdder(orders);
 
@@ -18,7 +19,7 @@ export const FullCart = () => {
     <CheckoutContainer>
       <Header>
         <h3>{orders.length} {item}</h3>
-        <CloseCartButton>
+        <CloseCartButton onClick={onClick}>
           <svg 
             width="26"
             height="26"
@@ -58,7 +59,7 @@ export const FullCart = () => {
 };
 
 FullCart.propTypes = {
-
+  onClick: PropTypes.func.isRequired
 };
 
 const CheckoutContainer = styled.div`
