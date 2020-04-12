@@ -20,19 +20,17 @@ export const CartItem = ({ order }) => {
       <div>1</div>
       <div>
         <div>
-          {order && <h5>{order.name}</h5>}
-          <h5>Name</h5>
+          <h5>{order.name}</h5>
           <ul>
             <li>{protein}</li>
           </ul>
           <div>
-            <a href="#">Edit</a>
             <button>
             Remove
             </button>
           </div>
         </div>
-        ${order && order.price.toFixed(2)}
+        ${order.price.toFixed(2)}
       </div>
     </CartLineItem>
   );
