@@ -1,19 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CartLineItem } from './CartItem.styled';
+import { removeProduct } from '../../../actions/productActions';
 
-export const CartItem = ({ order }) => {
-  const showProtein = (order) => {
-    if(order) {
-      const protein = order.protein;
-      return protein; 
-    }
-    else {
-      return; 
-    }
-  };
-
-  const protein = showProtein(order);
+export const CartItem = ({ order, index, dispatch }) => {
+  const protein = order ? order.protein : null;
 
   return (
     <CartLineItem>
@@ -25,7 +16,7 @@ export const CartItem = ({ order }) => {
             <li>{protein}</li>
           </ul>
           <div>
-            <button>
+            <button onClick={() => dispatch(removeProduct(index))}>
             Remove
             </button>
           </div>
@@ -37,5 +28,7 @@ export const CartItem = ({ order }) => {
 };
 
 CartItem.propTypes = {
-  order: PropTypes.object
+  order: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
+  dispatch: PropTypes.func.isRequired
 };

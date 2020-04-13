@@ -4,21 +4,22 @@ import { CartItem } from './CartItem';
 import styled from 'styled-components';
 import { useStore } from '../../../store';
 import { priceAdder } from '../../../utils';
+import { emptyCart } from '../../../actions/productActions';
 
 export const FullCart = ({ onClick }) => {
-  const [{ orders }] = useStore();
+  const [{ orders }, dispatch] = useStore();
   const total = priceAdder(orders);
 
   const cartItems = orders.map((order, i) => (
-    <CartItem order={order} key={i} />
+    <CartItem order={order} dispatch={dispatch} index={i} key={i} />
   ));
 
-  const item = orders.length <= 1 ? 'item' : 'items';
+  const itemOrItems = orders.length <= 1 ? 'item' : 'items';
   
   return (
     <CheckoutContainer>
       <Header>
-        <h3>{orders.length} {item}</h3>
+        <h3>{orders.length} {itemOrItems}</h3>
         <CloseCartButton onClick={onClick}>
           <svg 
             width="26"
@@ -52,7 +53,7 @@ export const FullCart = ({ onClick }) => {
       </Section>
       <Footer>
         <button>Checkout</button>
-        <button>Clear Cart</button>
+        <button onClick={() => dispatch(emptyCart())}>Clear Cart</button>
       </Footer>
     </CheckoutContainer>
   );
