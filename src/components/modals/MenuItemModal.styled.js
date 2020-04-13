@@ -1,5 +1,29 @@
 import styled from 'styled-components';
 
+export const ModalWrapper = styled.div`
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1040;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  div:first-child {
+    transform: translate(0, 0);
+    max-width: 484px;
+    width: 100%;
+    position: relative;
+
+    @media (max-width: 641px) {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+`;
+
 export const ModalContent = styled.div`
   position: relative;
   background-color: #fff;
@@ -14,19 +38,16 @@ export const ModalContent = styled.div`
   > button {
     opacity: 1;
     margin-top: -2px;
-
     padding: 0;
     cursor: pointer;
     background: transparent;
     border: 0;
-
     z-index: 1;
     position: absolute;
     right: 10px;
     top: 10px;
     width: 32px;
     height: 32px;
-
     float: right;
     font-size: 21px;
     font-weight: bold;

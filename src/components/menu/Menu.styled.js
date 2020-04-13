@@ -39,7 +39,7 @@ export const Section = styled.section`
   .product {
     margin: auto;
     border-radius: 2px;
-    max-width:100%;
+    max-width: 100%;
   }
 
   .product_price {
