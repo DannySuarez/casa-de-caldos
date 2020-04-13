@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const ItemModifier = ({ name, isChecked, handleChange }) => {
-  
   const checkIfExtraCost = name => {
     if(name === 'Picadita') return (
       <small>+1.00</small>
@@ -18,7 +17,7 @@ export const ItemModifier = ({ name, isChecked, handleChange }) => {
     <>
       <legend>
         <span>ADD PROTEIN</span>
-        <span>Select 1</span>
+        <span>Select Only 1</span>
       </legend>
       <fieldset>
         <div>
