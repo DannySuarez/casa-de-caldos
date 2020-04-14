@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 export const CheckoutContainer = styled.div`
- position: absolute;
+ display: flex;
+ flex-direction: column;
+ position: fixed;
  border: none;
  border-radius: 0 0 4px 4px;
  box-shadow: 0 2px 4px rgba(45,60,72,.2);
  display: block;
  width: 410px;
  padding: 0;
- display: flex;
- flex-direction: column;
  z-index: 1040;
  background-color: #fff;
  opacity:1 ;
@@ -20,10 +20,10 @@ export const CheckoutContainer = styled.div`
  @media screen and (min-width: 768px) and (max-width: 1023px),
  screen and (min-width: 1024px) and (max-width:1279px),
  screen and (min-width: 1280px) {
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  }
+  left: 0;
+  right: 0;
+  margin: 30px auto;
+ }
 
  @media screen and (max-width: 479px) {
    bottom: 0;
