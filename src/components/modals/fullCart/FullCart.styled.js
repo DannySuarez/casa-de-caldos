@@ -15,7 +15,15 @@ export const CheckoutContainer = styled.div`
  opacity:1 ;
  transform: translateZ(0);
  transition: transform .3s cubic-bezier(0,.36,.42,1);
- max-height:1 00vh;
+ max-height:100vh;
+
+ @media screen and (min-width: 768px) and (max-width: 1023px),
+ screen and (min-width: 1024px) and (max-width:1279px),
+ screen and (min-width: 1280px) {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  }
 
  @media screen and (max-width: 479px) {
    bottom: 0;

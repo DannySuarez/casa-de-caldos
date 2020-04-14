@@ -11,10 +11,12 @@ import { CartItem } from './CartItem';
 import { useStore } from '../../../store';
 import { priceAdder } from '../../../utils';
 import { emptyCart } from '../../../actions/productActions';
+import { useLockBodyScroll } from '../../../hooks/useLockBodyScroll';
 
 export const FullCart = ({ onClick }) => {
   const [{ orders }, dispatch] = useStore();
   const total = priceAdder(orders);
+  useLockBodyScroll();
 
   const cartItems = orders.map((order, i) => (
     <CartItem order={order} dispatch={dispatch} index={i} key={i} />
