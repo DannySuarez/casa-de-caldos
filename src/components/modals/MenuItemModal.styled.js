@@ -11,6 +11,10 @@ export const ModalWrapper = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
 
+  .modal-dialog {
+    margin: 30px auto;
+  }
+
   div:first-child {
     transform: translate(0, 0);
     max-width: 484px;
@@ -32,7 +36,6 @@ export const ModalContent = styled.div`
 
   @media (max-width: 641px) {
     min-height: 100vh;
-
   }
 
   > button {
