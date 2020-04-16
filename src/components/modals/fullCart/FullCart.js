@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   CheckoutContainer,
@@ -60,7 +61,9 @@ export const FullCart = ({ onClick }) => {
         </div>
       </Section>
       <Footer>
-        <button>Checkout</button>
+        <Link to="/checkout">
+          <button>Checkout</button>
+        </Link>
         <button onClick={() => dispatch(emptyCart())}>Clear Cart</button>
       </Footer>
     </CheckoutContainer>
