@@ -1,13 +1,11 @@
-import React, { useReducer } from 'react';
-import reducer, { initialState } from '../../reducers/customerReducer';
-import { useFirebase } from '../firebase/FirebaseContext';
+import React from 'react';
+import { useStore } from '../../store';
+// import { useFirebase } from '../firebase/FirebaseContext';
 import { Card, Section } from './CustomerInfo.styled';
 
 export const CustomerInfo = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const { name, email, phone } = state;
-
-  const firebase = useFirebase();
+  const [{ customerInfo: { name, email, phone } }, dispatch] = useStore();  
+  // const firebase = useFirebase();
 
   const onEnter = (e) => {
     e.preventDefault();
@@ -21,16 +19,16 @@ export const CustomerInfo = () => {
     
   };
   
-  const onSubmit = () => {
-    const user = {
-      name,
-      email,
-      phone,
-      completed: false,
-    };
+  // const onSubmit = () => {
+  //   const user = {
+  //     name,
+  //     email,
+  //     phone,
+  //     completed: false,
+  //   };
 
-    firebase.orders().push(user);
-  };
+  //   firebase.orders().push(user);
+  // };
 
   return (
     <>

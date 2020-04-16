@@ -7,7 +7,6 @@ export const Card = styled.div`
   border-radius: 3px;
   white-space: normal;
   text-align: center;
-  width: 97.5%;
 
   h2 {
     background-color: var(--rust);
