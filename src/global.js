@@ -20,17 +20,17 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	body {
-		margin-bottom: 25px;
+		margin-bottom: 15px;
     background-color: var(--lightorange);
 		text-rendering: optimizeLegibility;
 	}
 
 	main {
 		display: grid;
-		grid-gap: 3rem;
+		grid-gap: 1rem;
 		max-width: 1900px;
 		padding: 0 1.5rem;
-		margin: 2rem auto
+		margin: 0 auto
 	}
 
 	fieldset {
