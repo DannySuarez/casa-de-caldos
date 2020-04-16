@@ -6,13 +6,10 @@ export const CartContent = styled.div`
 `;
 
 export const PriceOverview = styled.section`
-
   div {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
   }
-
-
 `;
