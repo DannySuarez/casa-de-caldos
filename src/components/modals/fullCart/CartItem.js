@@ -21,7 +21,7 @@ export const CartItem = ({ order, index, dispatch }) => {
             </button>
           </div>
         </div>
-        ${order.price.toFixed(2)}
+        <p>${order.price.toFixed(2)}</p>
       </div>
     </CartLineItem>
   );

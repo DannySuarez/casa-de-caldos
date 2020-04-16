@@ -51,4 +51,8 @@ export const CartLineItem = styled.section`
     border: none;
     cursor: pointer;
   }
+
+  p {
+    margin-right: 5px;
+  }
 `;
