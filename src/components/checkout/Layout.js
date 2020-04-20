@@ -99,8 +99,11 @@ export const LayoutWrapper = styled.section`
   }
 
   .checkout-page_overview {
-    flex: 1 1 auto;
-    width: 100%;
+
+    @media screen and (max-width: 479px) {
+      flex: 1 1 auto;
+      width: 100%;
+    }
   }
 
   .cart-item {
