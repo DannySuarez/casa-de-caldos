@@ -17,10 +17,6 @@ export const LayoutWrapper = styled.section`
     width: 100%;
   }
 
-  a {
-    color: var(--rust);
-  }
-
   .content {
     @media screen and (max-width: 479px),
     screen and (min-width: 480px) and (max-width: 599px),

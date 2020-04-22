@@ -18,7 +18,6 @@ export const FooterWrapper = styled.footer`
     }
 
     a {
-      color: var(--rust);
       flex: 1 0 auto;
       font-size: 1.2em;
     }  
