@@ -15,3 +15,8 @@ export const emptyCart = () => ({
   type: EMPTY_CART,
   payload: []
 });
+
+export const CLEAR_ORDER = 'CLEAR_ORDER';
+export const clearOrder = () => ({
+  type: CLEAR_ORDER,
+});

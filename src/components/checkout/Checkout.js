@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { LayoutWrapper } from './Checkout.styled';
 import { Header } from '../header/Header';
 import { Footer } from '../footer/Footer';
@@ -9,11 +9,13 @@ import { CartItem } from '../modals/fullCart/CartItem';
 // import { useFirebase } from '../firebase/FirebaseContext';
 import { useStore } from '../../store';
 import { priceAdder } from '../../utils';
+import { clearOrder } from '../../actions/productActions';
 
 export const Checkout = () => {
   const [isActive, setIsActive] = useState(true);
   const [{ customerInformation, orders }, dispatch] = useStore();
   const { name, email, phone } = customerInformation;
+  const history = useHistory();
   // const firebase = useFirebase();
   
   const onPlaceOrder = () => {
@@ -26,7 +28,8 @@ export const Checkout = () => {
     };
     
     console.log(foodOrder);
-    
+    dispatch(clearOrder());
+    history.push('/thanks');
     // firebase.orders().push(foodOrder);
   };
   
@@ -71,14 +74,12 @@ export const Checkout = () => {
           <CustomerInfo setIsActive={setIsActive} />
           <div className="checkout-actions">
             <span className="checkout-actions-order-button">
-              <Link to="/thanks" >
-                <button 
-                  onClick={onPlaceOrder} 
-                  className="place-order-button button button-active" 
-                  disabled={isActive}>
+              <button
+                onClick={onPlaceOrder} 
+                className="place-order-button button button-active" 
+                disabled={isActive}>
                   Place Order
-                </button>
-              </Link>
+              </button>
             </span>
           </div>  
         </div>
