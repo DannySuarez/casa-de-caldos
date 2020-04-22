@@ -71,12 +71,14 @@ export const Checkout = () => {
           <CustomerInfo setIsActive={setIsActive} />
           <div className="checkout-actions">
             <span className="checkout-actions-order-button">
-              <button 
-                onClick={onPlaceOrder} 
-                className="place-order-button button button-active" 
-                disabled={isActive}>
+              <Link to="/thanks" >
+                <button 
+                  onClick={onPlaceOrder} 
+                  className="place-order-button button button-active" 
+                  disabled={isActive}>
                   Place Order
-              </button>
+                </button>
+              </Link>
             </span>
           </div>  
         </div>
