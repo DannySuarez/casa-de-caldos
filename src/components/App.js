@@ -8,7 +8,7 @@ import { GlobalStyles } from '../global';
 import { StoreProvider } from '../store';
 import CasaDeCaldos from './CasaDeCaldos';
 import { Checkout } from './checkout/Checkout';
-import { Thanks } from './thanks/thanks';
+import { Thanks } from './thanks/Thanks';
 
 export default function App() {
   return (
