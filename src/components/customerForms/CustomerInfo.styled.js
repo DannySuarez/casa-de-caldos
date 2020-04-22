@@ -50,8 +50,20 @@ export const Card = styled.div`
     font-size: 16px;
   }
 
-  @media (max-width: 641px) {
+  button {
+    border: none;
+    color: #fff;
+    height: 40px;
+    text-align: center;
+    outline: none;
+    border-radius: 4px;
+    width: 100px;
+    max-width: 100%;
+    cursor: pointer;
+    background-color: var(--rust);
+  }
 
+  @media (max-width: 641px) {
     label {
       width: 97.5%;
       text-align: left;

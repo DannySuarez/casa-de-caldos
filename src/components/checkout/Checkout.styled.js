@@ -161,4 +161,9 @@ export const LayoutWrapper = styled.section`
     background-color: var(--rust);
   }
 
+  .button[disabled] {
+    opacity: .405;
+    cursor: not-allowed;
+  }
+
 `;
