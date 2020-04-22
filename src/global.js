@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-	html {
+	:root {
 		--lightorange: #fdb641;
 		--rust: #b03a0c;
 		--lightborange: #efa23a;
@@ -30,7 +30,7 @@ export const GlobalStyles = createGlobalStyle`
 		grid-gap: 1rem;
 		max-width: 1900px;
 		padding: 0 1.5rem;
-		margin: 0 auto
+		margin: 1.5rem auto
 	}
 
 	fieldset {

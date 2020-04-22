@@ -1,10 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { HeaderWrapper } from './Header.styled';
 
 export const Header = () => {
   return (
     <HeaderWrapper>
-      <h1>Casa De Caldos</h1>
+      <Link to="/">
+        <h1>Casa De Caldos</h1>
+      </Link>
       <details open>
         <summary>
           Online Ordering Info:
@@ -17,26 +20,3 @@ export const Header = () => {
     </HeaderWrapper>
   );
 };
-
-const HeaderWrapper = styled.header`
-  @import url("https://fonts.googleapis.com/css?family=Pacifico|Fira+Mono&display=swap");
-  text-align: center;
-  font-family: "Fira Mono", monospace;
-  font-size: .8rem;
-
-  h1 {
-  @import url("https://fonts.googleapis.com/css?family=Comfortaa&display=swap");
-  font-size: 2rem;
-  font-family: "Comfortaa","Fira Mono", monospace;
-  margin: 2rem auto;
-  color: var(--rust);
-  }
-
-  @media (min-width: 1824px) {
-    h1 {
-      font-size: 4rem;
-    }
-
-    font-size: 1.2rem;
-  }
-`;
