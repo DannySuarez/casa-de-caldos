@@ -1,4 +1,4 @@
-import { PriceAdder, priceAdjust } from './index';
+import { priceAdder, priceAdjust } from './index';
 describe('util helpers', () => {
   it('should map thrugh an array of orders and return total price', () => {
     const orders = [
@@ -28,7 +28,7 @@ describe('util helpers', () => {
       }
     ];
 
-    const total = PriceAdder(orders);
+    const total = priceAdder(orders);
     expect(total).toEqual(29.48);
   });
 
@@ -60,7 +60,7 @@ describe('util helpers', () => {
       }
     ];
 
-    const total = PriceAdder(orders);
+    const total = priceAdder(orders);
     expect(total).toEqual(30.96);
   });
 
