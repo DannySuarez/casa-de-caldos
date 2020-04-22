@@ -19,7 +19,7 @@ export const StoreProvider = ({ children }) => {
   return (
     <StateContext.Provider
       value={useCombinedReducers({
-        customerInfo: useReducer(customerReducer, customerInfoState),
+        customerInformation: useReducer(customerReducer, customerInfoState),
         orders: useReducer(ordersReducer, ordersState)
       })}>
       {children}
