@@ -146,5 +146,4 @@ export const AddToCartButton = styled.div`
   p {
     text-align: center;
   }
-
 `;

@@ -44,7 +44,7 @@ export const Checkout = () => {
     <LayoutWrapper>
       <Header />
       <section className="content">
-        <div className="checkout-page_overview">
+        <div className="checkout-page-overview">
           <section>
             <div>
               <img />
@@ -76,7 +76,7 @@ export const Checkout = () => {
             <span className="checkout-actions-order-button">
               <button
                 onClick={onPlaceOrder} 
-                className="place-order-button button button-active" 
+                className="button button-active" 
                 disabled={isActive}>
                   Place Order
               </button>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import {
   CheckoutContainer,
   Header,
@@ -9,9 +9,9 @@ import {
   SubtotalSection,
   Footer } from './FullCart.styled';
 import { CartItem } from './CartItem';
-import { useStore } from '../../../store';
 import { priceAdder } from '../../../utils';
 import { emptyCart } from '../../../actions/productActions';
+import { useStore } from '../../../store';
 import { useLockBodyScroll } from '../../../hooks/useLockBodyScroll';
 
 export const FullCart = ({ onClick }) => {

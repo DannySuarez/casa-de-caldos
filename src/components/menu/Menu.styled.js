@@ -31,7 +31,7 @@ export const Section = styled.section`
   display: flex;
   flex-direction: column;
 
-  .menu_item {
+  .menu-item {
     display: flex;
     flex-direction: column;
   }
@@ -42,7 +42,7 @@ export const Section = styled.section`
     max-width: 100%;
   }
 
-  .product_price {
+  .product-price {
     order: 2;
     margin-top: 0px;
     margin-bottom: .5em;
@@ -57,7 +57,7 @@ export const Section = styled.section`
     color: var(--rust);
   }
 
-  .product_description {
+  .product-description {
     margin-top: auto;
     margin-bottom: .5em;
     color: var(--rust);
@@ -89,5 +89,4 @@ export const Section = styled.section`
     margin: 0 0 .5em;
     color: var(--rust);
   }
-
 `;

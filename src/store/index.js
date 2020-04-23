@@ -15,7 +15,6 @@ const ordersState = [];
 export const StateContext = createContext(null);
 
 export const StoreProvider = ({ children }) => {
-  
   return (
     <StateContext.Provider
       value={useCombinedReducers({

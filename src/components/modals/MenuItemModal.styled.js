@@ -95,4 +95,3 @@ export const ModalBody = styled.section`
     margin-top: -4px;
   }
 `;
-

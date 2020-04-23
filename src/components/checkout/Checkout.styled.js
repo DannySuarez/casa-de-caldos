@@ -31,7 +31,7 @@ export const LayoutWrapper = styled.section`
     align-items: flex-start;
   }
 
-  .checkout-page_overview {
+  .checkout-page-overview {
     order: 1;
 
     @media screen and (min-width: 1024px) and (max-width: 1279px) {
@@ -98,7 +98,7 @@ export const LayoutWrapper = styled.section`
     width: 100%;
     }
   }
-/* add justify content below maybe */
+  
   .checkout-actions {
     display: flex;
     align-items: center;
@@ -161,5 +161,4 @@ export const LayoutWrapper = styled.section`
     opacity: .405;
     cursor: not-allowed;
   }
-
 `;

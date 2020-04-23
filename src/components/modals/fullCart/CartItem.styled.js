@@ -31,7 +31,6 @@ export const CartLineItem = styled.section`
 
   ul {
     list-style-type: none;
-    color: #949ba3;
     padding: 0;
     margin: -1px 0 0 0;
   }
@@ -50,6 +49,7 @@ export const CartLineItem = styled.section`
     padding: 0;
     border: none;
     cursor: pointer;
+    color: var(--rust);
   }
 
   p {

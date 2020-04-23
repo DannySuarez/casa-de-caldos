@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ModalForm } from './ModalForm';
-import { useLockBodyScroll } from '../../hooks/useLockBodyScroll';
 import { 
   ModalWrapper,
   ModalContent,
   ModalImage,
   ModalBody
 } from './MenuItemModal.styled';
+import { ModalForm } from './ModalForm';
+import { useLockBodyScroll } from '../../hooks/useLockBodyScroll';
 
 export const MenuItemModal = ({ item, setIsOpen }) => {  
   useLockBodyScroll();
@@ -15,7 +15,7 @@ export const MenuItemModal = ({ item, setIsOpen }) => {
   return (
     <ModalWrapper>
       <div className="modal-dialog">
-        <ModalContent className="model-content">
+        <ModalContent>
           <button onClick={() => setIsOpen(prevState => !prevState)}><i>X</i></button>
           <ModalImage>
             <img src={item.img} />

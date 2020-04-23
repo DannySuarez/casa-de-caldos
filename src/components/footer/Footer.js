@@ -16,6 +16,5 @@ export const Footer = () => {
           src="https://res.cloudinary.com/thecodehouse/image/upload/c_scale,q_80,w_98/v1586966337/casa-de-caldos/mainLogo_1_i169yo.png" />
       </figure>
     </FooterWrapper>
-      
   );
 };

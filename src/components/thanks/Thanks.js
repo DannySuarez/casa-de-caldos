@@ -26,8 +26,8 @@ export const Thanks = () => {
 
 export const Section = styled.section`
   text-align: center;
-  p {
-    margin: 3px;
+  h2, h3 {
+    margin-bottom: 8px;
   }
 
   ul {

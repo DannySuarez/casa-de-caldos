@@ -77,8 +77,8 @@ export const Card = styled.div`
 `;
 
 export const Section = styled.section`
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: .833333333em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: .833333333em;
 `;

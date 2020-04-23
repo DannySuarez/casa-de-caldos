@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { ItemModifier } from './ItemModifier';
-import { useStore } from '../../store';
-import { addProduct } from '../../actions/productActions';
 import { 
   Form,
   ItemModifiers, 
   SpecialInstructions, 
   AddToCartButton 
 } from './ModalForm.styled';
+import { ItemModifier } from './ItemModifier';
+import { addProduct } from '../../actions/productActions';
 import { priceAdjust } from '../../utils';
+import { useStore } from '../../store';
 
 export const ModalForm = ({ item, setIsOpen }) => {
   const { name, price } = item;
@@ -66,7 +66,7 @@ export const ModalForm = ({ item, setIsOpen }) => {
 
   return (
     <Form onSubmit={SubmitOrder}>
-      <ItemModifiers className="parent">
+      <ItemModifiers>
         <ItemModifier 
           name={name} 
           isChecked={isChecked} 
