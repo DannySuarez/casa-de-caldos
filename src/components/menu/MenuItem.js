@@ -9,7 +9,7 @@ export const MenuItem = ({ item }) => {
   return (
     <>
       <Section className="media cell--1-2" key={item.id}>
-        <div className="menu_item">
+        <div className="menu-item">
           <div>
             <img className="product" src={item.img} alt={item.alt} />
           </div>
@@ -29,4 +29,3 @@ export const MenuItem = ({ item }) => {
 MenuItem.propTypes = {
   item: PropTypes.object.isRequired
 };
-
