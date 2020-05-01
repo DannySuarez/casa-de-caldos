@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const CutomerMeal = ({ name, price, specialRequest, protein }) => {
+export const CustomerMeal = ({ name, price, specialRequest, protein }) => {
   return (
     <tr>
       <td scope="row">{name}</td>
@@ -12,9 +12,9 @@ export const CutomerMeal = ({ name, price, specialRequest, protein }) => {
   );
 };
 
-CutomerMeal.propTypes = {
+CustomerMeal.propTypes = {
   name: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   specialRequest: PropTypes.string,
-  protein: PropTypes.string
+  protein: PropTypes.array
 };
