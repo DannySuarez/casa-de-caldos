@@ -18,7 +18,8 @@ class Firebase {
   }
 
   orders = () => this.db.ref('orders');
-
+  getOrders = () => this.db.ref('orders').orderByChild('complete').equalTo(false).limitToFirst(5)
+  updateOrders = (updates) => this.db.ref('orders').update(updates)
 }
 
 export default Firebase;
