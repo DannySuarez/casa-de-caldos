@@ -7,7 +7,7 @@ export const CustomerMeal = ({ name, price, specialRequest, protein }) => {
       <td scope="row">{name}</td>
       <td>{protein}</td>
       <td>{specialRequest}</td>
-      <td datatype="currency">{price.toFixed(2)}</td>
+      <td datatype="currency">${price.toFixed(2)}</td>
     </tr>
   );
 };
