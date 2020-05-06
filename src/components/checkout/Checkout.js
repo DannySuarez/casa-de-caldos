@@ -5,8 +5,7 @@ import { Header } from '../header/Header';
 import { Footer } from '../footer/Footer';
 import { CustomerInfo } from '../customerForms/CustomerInfo';
 import { CartItem } from '../modals/fullCart/CartItem';
-
-// import { useFirebase } from '../firebase/FirebaseContext';
+import { useFirebase } from '../firebase/FirebaseContext';
 import { useStore } from '../../store';
 import { priceAdder } from '../../utils';
 import { clearOrder } from '../../actions/productActions';
@@ -14,10 +13,11 @@ import { clearOrder } from '../../actions/productActions';
 export const Checkout = () => {
   const [isActive, setIsActive] = useState(true);
   const [{ customerInformation, orders }, dispatch] = useStore();
-  const { name, email, phone } = customerInformation;
   const history = useHistory();
-  // const firebase = useFirebase();
-  
+  const firebase = useFirebase();
+
+  const { name, email, phone } = customerInformation;
+
   const onPlaceOrder = () => {
     const foodOrder = {
       name,
@@ -27,12 +27,10 @@ export const Checkout = () => {
       complete: false
     };
     
-    console.log(foodOrder);
     dispatch(clearOrder());
     history.push('/thanks');
-    // firebase.orders().push(foodOrder);
+    firebase.orders().push(foodOrder);
   };
-  
   
   const cartItems = orders.map((order, i) => (
     <div className="cart-item" key={i}>
