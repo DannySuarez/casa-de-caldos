@@ -6,7 +6,11 @@ export default function(state, action) {
         [action.field]: action.value
       };
     case 'CLEAR_ORDER':
-      return {};
+      return {
+        name: '',
+        email: '',
+        phone: ''
+      };
     default:
       return state;
   }
