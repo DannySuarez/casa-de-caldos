@@ -8,11 +8,10 @@ export const SignIn = () => {
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    login(email, password);    
+    login(email, password);
   };
 
   return (
-
     <form onSubmit={handleSignIn}>
       {authError && <p>{authError}</p>}
       <label htmlFor="email">Email Address:</label>
@@ -21,6 +20,5 @@ export const SignIn = () => {
       <input type="password" id="password" name="password"  onChange={({ target }) => setPassword(target.value)} />
       <button>Enter</button>
     </form>
-    
   );
 };

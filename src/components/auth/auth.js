@@ -17,7 +17,6 @@ export const SessionProvider = ({ children }) => {
     firebase.verifyAuth(user => {
       if(user) {
         setUser(user.email);
-        history.push('/vieworders');
         setLoading(false);
       } else {
         setLoading(false);
@@ -29,9 +28,11 @@ export const SessionProvider = ({ children }) => {
   const login = (email, password) => {
     setLoading(true);
     setAuthError(null);
-    return firebase.signInUser(email, password)
+    firebase.signInUser(email, password)
       .then(() => {
         setLoading(false);
+        setUser(true);
+        history.push('/vieworders');
       })
       .catch(error => {
         setAuthError(error.message);
