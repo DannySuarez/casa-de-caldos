@@ -6,31 +6,41 @@ import { useFirebase } from '../firebase/FirebaseContext';
 const SessionContext = createContext();
 
 export const SessionProvider = ({ children }) => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
   const [authError, setAuthError] = useState();
+  const [loading, setLoading] = useState(true);
   const history = useHistory();
   const firebase = useFirebase();
 
   useEffect(() => {
+    setLoading(true);
     firebase.verifyAuth(user => {
       if(user) {
         setUser(user.email);
         history.push('/vieworders');
+        setLoading(false);
+      } else {
+        setLoading(false);
       }
     });
     
   }, []);
 
   const login = (email, password) => {
+    setLoading(true);
     setAuthError(null);
-    return firebase.signInUser(email, password).catch(error => {
-      setAuthError(error.message);    
-    });
-
+    return firebase.signInUser(email, password)
+      .then(() => {
+        setLoading(false);
+      })
+      .catch(error => {
+        setAuthError(error.message);
+        setLoading(false);
+      });
   };
 
   return (
-    <SessionContext.Provider value={{ user, login, authError }}>
+    <SessionContext.Provider value={{ user, login, authError, loading }}>
       {children}
     </SessionContext.Provider>
   );
@@ -54,6 +64,11 @@ export const useLogin = () => {
 export const useAuthError = () => {
   const { authError } = useContext(SessionContext);
   return authError;
+};
+
+export const useSessionLoading = () => {
+  const { loading } = useContext(SessionContext);
+  return loading;
 };
 
 SessionProvider.propTypes = {
