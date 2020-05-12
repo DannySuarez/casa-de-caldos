@@ -50,6 +50,10 @@ export const Card = styled.div`
     font-size: 16px;
   }
 
+  input[disabled] {
+    opacity: .5;
+  }
+
   button {
     border: none;
     color: #fff;

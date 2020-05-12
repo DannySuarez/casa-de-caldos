@@ -21,7 +21,7 @@ export const CheckoutContainer = styled.div`
  screen and (min-width: 1280px) {
   left: 0;
   right: 0;
-  margin: 30px auto;
+  margin: auto;
  }
 
  @media screen and (max-width: 479px) {
