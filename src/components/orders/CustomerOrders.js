@@ -42,6 +42,9 @@ export const CustomerOrders = () => {
       setOnlineOrders(formatedOrders);
       setLoading(false);
     });
+    return () => {
+      firebase.getOrders().off();
+    };
 
   }, []);  
 
