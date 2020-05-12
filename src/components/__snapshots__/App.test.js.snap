@@ -2,25 +2,11 @@
 
 exports[`App component renders App 1`] = `
 <BrowserRouter>
-  <Switch>
-    <StoreProvider>
-      <Memo(GlobalStyleComponent) />
-      <main>
-        <Route
-          component={[Function]}
-          exact={true}
-          path="/"
-        />
-        <Route
-          component={[Function]}
-          path="/checkout"
-        />
-        <Route
-          component={[Function]}
-          path="/thanks"
-        />
-      </main>
-    </StoreProvider>
-  </Switch>
+  <StoreProvider>
+    <Memo(GlobalStyleComponent) />
+    <main>
+      <Router />
+    </main>
+  </StoreProvider>
 </BrowserRouter>
 `;
