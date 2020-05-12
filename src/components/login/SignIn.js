@@ -2,16 +2,14 @@ import React, { useState } from 'react';
 import { useLogin } from '../auth/auth';
 
 export const SignIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const { login, authError } = useLogin();
-
 
   const handleSignIn = (e) => {
     e.preventDefault();
     login(email, password);    
   };
-
 
   return (
 
