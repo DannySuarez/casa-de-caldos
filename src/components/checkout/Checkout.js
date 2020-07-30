@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { LayoutWrapper } from './Checkout.styled';
 import { Header } from '../header/Header';
 import { Footer } from '../footer/Footer';
@@ -9,14 +9,43 @@ import { useFirebase } from '../firebase/FirebaseContext';
 import { useStore } from '../../store';
 import { priceAdder } from '../../utils';
 import { clearOrder } from '../../actions/productActions';
+import { loadStripe } from '@stripe/stripe-js';
+const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
 
 export const Checkout = () => {
   const [isActive, setIsActive] = useState(true);
   const [{ customerInformation, orders }, dispatch] = useStore();
-  const history = useHistory();
+  const { name, email, phone } = customerInformation;
   const firebase = useFirebase();
 
-  const { name, email, phone } = customerInformation;
+  const handlePayment = async({ orders }) => {
+    const price = priceAdder([...orders]);
+    const amount = price * 100;
+    const data = {
+      quantity: orders.length,
+      amount: amount.toFixed()
+    };
+
+    const reponse = await fetch('/.netlify/functions/create-checkout', {
+      method: 'POST',
+      mode: 'no-cors',
+      credentials: 'omit',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json());
+
+    const stripe = await stripePromise;
+    const { error } = await stripe.redirectToCheckout({
+      sessionId: reponse.sessionId
+    });
+
+    if(error) {
+      console.log(error);
+    }
+
+  };
 
   const onPlaceOrder = () => {
     const foodOrder = {
@@ -27,9 +56,9 @@ export const Checkout = () => {
       complete: false
     };
     
-    dispatch(clearOrder());
-    history.push('/thanks');
     firebase.orders().push(foodOrder);
+    handlePayment(foodOrder);
+    dispatch(clearOrder());
   };
   
   const cartItems = orders.map((order, i) => (
