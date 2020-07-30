@@ -62,11 +62,6 @@ export const useLogin = () => {
   return { login, authError };
 };
 
-export const useAuthError = () => {
-  const { authError } = useContext(SessionContext);
-  return authError;
-};
-
 export const useSessionLoading = () => {
   const { loading } = useContext(SessionContext);
   return loading;
