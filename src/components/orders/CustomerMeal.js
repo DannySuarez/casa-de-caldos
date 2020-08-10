@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { BodyRow, BodyCell } from './CustomerOrders.styled';
 
 export const CustomerMeal = ({ name, price, specialRequest, protein }) => {
   return (
-    <tr>
-      <td scope="row">{name}</td>
-      <td>{protein}</td>
-      <td>{specialRequest}</td>
-      <td datatype="currency">${price.toFixed(2)}</td>
-    </tr>
+    <BodyRow>
+      <BodyCell scope="row">{name}</BodyCell>
+      <BodyCell>{protein}</BodyCell>
+      <BodyCell>{specialRequest}</BodyCell>
+      <BodyCell datatype="currency">${price.toFixed(2)}</BodyCell>
+    </BodyRow>
   );
 };
 
