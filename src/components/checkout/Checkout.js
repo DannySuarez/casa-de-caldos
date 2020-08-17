@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { LayoutWrapper } from './Checkout.styled';
 import { Header } from '../header/Header';
 import { Footer } from '../footer/Footer';
@@ -17,13 +17,14 @@ export const Checkout = () => {
   const [{ customerInformation, orders }, dispatch] = useStore();
   const { name, email, phone } = customerInformation;
   const firebase = useFirebase();
+  const history = useHistory();
 
   const handlePayment = async({ orders }) => {
     const price = priceAdder([...orders]);
     const amount = price * 100;
     const data = {
       quantity: orders.length,
-      amount: amount.toFixed()
+      amount: amount.toFixed(),
     };
 
     const reponse = await fetch('/.netlify/functions/create-checkout', {
@@ -33,18 +34,31 @@ export const Checkout = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
-    }).then(res => res.json());
+      body: JSON.stringify(data),
+    }).then((res) => res.json());
 
     const stripe = await stripePromise;
     const { error } = await stripe.redirectToCheckout({
-      sessionId: reponse.sessionId
+      sessionId: reponse.sessionId,
     });
 
     if(error) {
       console.log(error);
     }
+  };
 
+  const onPayOnline = () => {
+    const foodOrder = {
+      name,
+      email,
+      phone,
+      orders,
+      complete: false,
+    };
+
+    firebase.orders().push(foodOrder);
+    handlePayment(foodOrder);
+    dispatch(clearOrder());
   };
 
   const onPlaceOrder = () => {
@@ -53,17 +67,17 @@ export const Checkout = () => {
       email,
       phone,
       orders,
-      complete: false
+      complete: false,
     };
-    
+
     firebase.orders().push(foodOrder);
-    handlePayment(foodOrder);
+    history.push('/thanks');
     dispatch(clearOrder());
   };
-  
+
   const cartItems = orders.map((order, i) => (
     <div className="cart-item" key={i}>
-      <CartItem order={order} dispatch={dispatch} index={i}  />
+      <CartItem order={order} dispatch={dispatch} index={i} />
     </div>
   ));
 
@@ -72,23 +86,14 @@ export const Checkout = () => {
       <Header />
       <section className="content">
         <div className="checkout-page-overview">
-          <section>
-            <div>
-              <img />
-            </div>
-          </section>
           <div className="cart-overview-content">
             <div className="cart-item merchant">
               <h5>Casa De Caldos</h5>
               <div>
-                <Link to="/">
-                  Menu
-                </Link>
+                <Link to="/">Menu</Link>
               </div>
             </div>
-            <div className="cart-items">
-              {cartItems}
-            </div>
+            <div className="cart-items">{cartItems}</div>
             <div>
               <div className="cart-item overview overview-item">
                 <h5>Total</h5>
@@ -102,13 +107,17 @@ export const Checkout = () => {
           <div className="checkout-actions">
             <span className="checkout-actions-order-button">
               <button
-                onClick={onPlaceOrder} 
-                className="button button-active" 
-                disabled={isActive}>
-                  Place Order
+                onClick={onPlaceOrder}
+                className="button button-active"
+                disabled={isActive}
+              >
+                Pay In Store
+              </button>
+              <button onClick={onPayOnline} className="button button-active" disabled={isActive}>
+                Pay Online
               </button>
             </span>
-          </div>  
+          </div>
         </div>
       </section>
       <Footer />
