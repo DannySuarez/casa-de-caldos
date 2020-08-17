@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { CustomerContact } from './CustomerContact';
 import { CustomerMeals } from './CustomerMeals';
 import { useFirebase } from '../firebase/FirebaseContext';
-import { Layout, Container, Table } from './CustomerOrders.styled';
+import { Layout, Container, Table, HeaderCell, BodyRow } from './CustomerOrders.styled';
 
 export const CustomerOrders = () => {
   const [onlineOrders, setOnlineOrders] = useState([]);
@@ -46,7 +46,7 @@ export const CustomerOrders = () => {
       firebase.getOrders().off();
     };
 
-  }, []);  
+  }, []);
 
   const onComplete = (e) => {
     const checked = e.target.type === 'checkbox' ? e.target.checked : null;
@@ -68,12 +68,12 @@ export const CustomerOrders = () => {
           />
           <Table>
             <thead>
-              <tr>
-                <th scope="col">Menu Item</th>
-                <th scope="col">Topping/Stuffing</th>
-                <th scope="col">Special Request</th>
-                <th scope="col">Price</th>
-              </tr>
+              <BodyRow>
+                <HeaderCell scope="col">Menu Item</HeaderCell>
+                <HeaderCell scope="col">Topping/Stuffing</HeaderCell>
+                <HeaderCell scope="col">Special Request</HeaderCell>
+                <HeaderCell scope="col">Price</HeaderCell>
+              </BodyRow>
             </thead>
             <tbody>
               <CustomerMeals key={order.phone} orders={order.orders}/>

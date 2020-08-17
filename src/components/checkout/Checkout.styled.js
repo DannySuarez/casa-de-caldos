@@ -129,6 +129,7 @@ export const LayoutWrapper = styled.section`
   .checkout-actions-order-button {
     @media screen and (max-width: 479px) {
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
       padding: 0 20px;
     }
@@ -138,6 +139,10 @@ export const LayoutWrapper = styled.section`
       flex: 1 1 100%;
       margin-bottom: 10px;
       order: -1;
+    }
+
+    button {
+      margin-top: 10px;
     }
   }
 
