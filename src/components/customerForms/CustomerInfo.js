@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useStore } from '../../store';
 import { Card, Section } from './CustomerInfo.styled';
+import { useCustomerSetStateContext, useCustomerStateContext } from '../context/CustomerInfoContext';
 
 export const CustomerInfo = ({ setIsActive }) => {
-  const [{ customerInformation: { name, email, phone } }, dispatch] = useStore();  
   const [isDisabled, setIsDisabled] = useState(false);
-  const buttonText = isDisabled ? 'Edit' : 'Continue';
+  const { setName, setEmail, setPhone }  = useCustomerSetStateContext();
+  const { name, email, phone } = useCustomerStateContext();
 
   const onEnter = (e) => {
     e.preventDefault();    
@@ -29,11 +29,7 @@ export const CustomerInfo = ({ setIsActive }) => {
             <label htmlFor="Full Name"><i>*</i>Full Name:</label>
             <input
               value={name}
-              onChange={(e) => dispatch({
-                type: 'FIELD',
-                field: 'name',
-                value: e.currentTarget.value
-              })}
+              onChange={e => setName(e.target.value)}
               type="text"
               id="Full Name"
               name="Full Name"
@@ -45,11 +41,7 @@ export const CustomerInfo = ({ setIsActive }) => {
             <label htmlFor="Email">Email Address:</label>
             <input
               value={email}
-              onChange={(e) => dispatch({
-                type: 'FIELD',
-                field: 'email',
-                value: e.currentTarget.value
-              })}
+              onChange={e => setEmail(e.target.value)}
               type="text" 
               id="Email"
               name="Email"
@@ -60,11 +52,7 @@ export const CustomerInfo = ({ setIsActive }) => {
             <label htmlFor="Phone"><i>*</i>Phone Number:</label>
             <input
               value={phone}
-              onChange={(e) => dispatch({
-                type: 'FIELD',
-                field: 'phone',
-                value: e.currentTarget.value
-              })}
+              onChange={e => setPhone(e.target.value)}
               type="tel"
               id="Phone"
               name="Phone"
@@ -73,7 +61,7 @@ export const CustomerInfo = ({ setIsActive }) => {
               required
             />
           </Section>
-          <button>{buttonText}</button>
+          <button>{ isDisabled ? 'Edit' : 'Continue' }</button>
         </form>
       </Card>
     </>
