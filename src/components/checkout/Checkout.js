@@ -12,7 +12,7 @@ import { PlaceOrder } from './PlaceOrder';
 
 export const Checkout = () => {
   const [isActive, setIsActive] = useState(true);
-  const [{ orders }, dispatch] = useStore();
+  const [orders, dispatch] = useStore();
   
   const cartItems = orders.map((order, i) => (
     <div className="cart-item" key={i}>

@@ -6,7 +6,7 @@ import { useStore } from '../../store';
 import { priceAdder } from '../../utils';
 
 export const Cart = () => {
-  const [{ orders }] = useStore();
+  const [orders] = useStore();
   const [isShowing, setIsShowing] = useState(false);
   const cartTotal = priceAdder(orders);
 

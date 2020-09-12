@@ -9,7 +9,7 @@ import { clearOrder } from '../../actions/productActions';
 export const PlaceOrder = ({ isActive }) => {
   const history = useHistory();
   const firebase = useFirebase();
-  const [{ orders }, dispatch] = useStore();
+  const [orders, dispatch] = useStore();
   const { name, email, phone } = useCustomerStateContext();
 
   const onPlaceOrder = () => {

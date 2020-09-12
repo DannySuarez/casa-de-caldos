@@ -15,7 +15,7 @@ import { useStore } from '../../../store';
 import { useLockBodyScroll } from '../../../hooks/useLockBodyScroll';
 
 export const FullCart = ({ onClick }) => {
-  const [{ orders }, dispatch] = useStore();
+  const [orders, dispatch] = useStore();
   const total = priceAdder(orders);
   useLockBodyScroll();
 
