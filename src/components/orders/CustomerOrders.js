@@ -46,7 +46,7 @@ export const CustomerOrders = () => {
       firebase.getOrders().off();
     };
 
-  }, []);  
+  }, []);
 
   const onComplete = (e) => {
     const checked = e.target.type === 'checkbox' ? e.target.checked : null;
